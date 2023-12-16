@@ -26,7 +26,7 @@ from config import BANNED_USERS
 from strings import get_string
 
 
-@app.on_message(filters.command(["null01"]) & filters.private & ~BANNED_USERS)
+@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
     await add_served_user(message.from_user.id)
@@ -98,7 +98,7 @@ async def start_pm(client, message: Message, _):
             )
 
 
-@app.on_message(filters.command(["null01"]) & filters.group & ~BANNED_USERS)
+@app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
 async def start_gp(client, message: Message, _):
     out = start_panel(_)
@@ -130,7 +130,7 @@ async def welcome(client, message: Message):
                     await message.reply_text(
                         _["start_5"].format(
                             app.mention,
-                            f"https://t.me/{app.username}?null01=sudolist",
+                            f"https://t.me/{app.username}?start=sudolist",
                             config.SUPPORT_CHAT,
                         ),
                         disable_web_page_preview=True,
